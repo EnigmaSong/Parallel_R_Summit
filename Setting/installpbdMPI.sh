@@ -13,4 +13,4 @@ R CMD INSTALL pbdMPI_0.3-3.tar.gz --configure-args=" \
   --with-mpi-type=OPENMPI \
   --with-mpi-include=$CURC_OPENMPI_INC \
   --with-mpi-libpath=$CURC_OPENMPI_LIB" \
-  --library=/projects/$USER/R/library/ --no-test-load
+  --library=$R_LIBS --no-test-load
