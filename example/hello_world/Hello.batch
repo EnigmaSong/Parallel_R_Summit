@@ -1,0 +1,12 @@
+#!/bin/sh
+#SBATCH --job-name=R_MPI
+#SBATCH --nodes=4
+#SBATCH --time=1
+
+# Load R module
+module load R
+# the openmpi module is not loaded by default with R
+ml gcc 
+ml openmpi/2.0.1
+
+mpirun Rscript hello.R
