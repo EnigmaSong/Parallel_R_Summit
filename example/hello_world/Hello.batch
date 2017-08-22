@@ -9,4 +9,4 @@ module load R
 ml gcc 
 ml openmpi/2.0.1
 
-mpirun Rscript hello.R
+mpirun Rscript hello_mpi.R
