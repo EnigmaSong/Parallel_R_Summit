@@ -1,2 +1,4 @@
 # Parallel_R_Summit
-Parallel R on Summit in a nutshell
+Parallel R on Summit in a nutshell.
+
+See Wiki pages.
