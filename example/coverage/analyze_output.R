@@ -17,3 +17,4 @@ ci.raw %>%
     geom_hline(yintercept = .95, lty=2) +
     geom_smooth(se = F) 
   
+.Last=NULL
