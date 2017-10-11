@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#SBATCH -J pi
+#SBATCH -p shas
+#SBATCH --qos normal
+#SBATCH --nodes 1
+#SBATCH --ntasks-per-node=10
+#SBATCH -o pi.out
+#SBATCH --time=00:01:00
+
+#cd $PBS_O_WORKDIR
+R_PROFILE=$PROJECTS/R/library/snow/RMPISNOWprofile;
+export R_PROFILE
+
+ml R
+ml gcc
+ml openmpi/2.0.1
+
+date
+START=`date +%s`
+mpirun Rscript --no-save $HOME/RMACC/2017/Parallel_R/examples/pi_mpi.R
+END=`date +%s`
+date
+
+ELAPSED=$(( $END - $START ))
+echo "Elapsed time (hrs):
+$(echo "scale=10; $ELAPSED/3600" | bc)"
