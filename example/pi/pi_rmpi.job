@@ -8,10 +8,6 @@
 #SBATCH -o pi.out
 #SBATCH --time=00:01:00
 
-#cd $PBS_O_WORKDIR
-R_PROFILE=$PROJECTS/R/library/snow/RMPISNOWprofile;
-export R_PROFILE
-
 ml R
 ml gcc
 ml openmpi/2.0.1
