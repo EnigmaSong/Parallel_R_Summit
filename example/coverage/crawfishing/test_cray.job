@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N sn_sim
+#PBS -j oe
+#PBS -l mppwidth=288
+#PBS -q ccm_queue
+cd $PBS_O_WORKDIR
+R_PROFILE=$HOME/lustrefs/R/library/snow/RMPISNOWprofile;
+export R_PROFILE
+
+date
+START=`date +%s`
+aprun -B R --no-save --no-restore CMD BATCH control.R
+$PBS_JOBNAME.R_output
+END=`date +%s`
+date
+ELAPSED=$(( $END - $START ))
+echo "Elapsed time (hrs):
+$(echo "scale=10; $ELAPSED/3600" | bc)"
