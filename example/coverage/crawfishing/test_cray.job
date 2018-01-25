@@ -9,7 +9,7 @@ export R_PROFILE
 
 date
 START=`date +%s`
-aprun -B R --no-save --no-restore CMD BATCH control.R
+aprun -B R --no-save --no-restore CMD BATCH control_cray.R
 $PBS_JOBNAME.R_output
 END=`date +%s`
 date
