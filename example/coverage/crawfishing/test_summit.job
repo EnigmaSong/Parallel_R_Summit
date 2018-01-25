@@ -1,0 +1,27 @@
+#!/bin/sh
+
+#SBATCH --job-name powersim
+#SBATCH --account csu-general
+#SBATCH --partition shas
+#SBATCH --qos normal
+#SBATCH --nodes 4
+#SBATCH --ntasks-per-node=24
+#SBATCH --time 3:00:00
+#SBATCH -o log.out
+#SBATCH --mail-type END
+#SBATCH --mail-user yssong@colostate.edu
+
+ml R
+ml gcc
+ml openmpi/2.0.1
+
+R_PROFILE=/projects/$USER/R/library/snow/RMPISNOWprofile; export R_PROFILE
+
+date
+START=`date +%s`
+mpirun R --no-save --no-restore CMD BATCH control.R
+END=`date +%s`
+date
+
+ELAPSED=$(( $END - $START ))
+echo "Elapsed time (hrs): $(echo "scale=10; $ELAPSED/3600" | bc)"
