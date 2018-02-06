@@ -27,7 +27,3 @@ if [ -f ~/README.mdwn ]; then
 fi
 
 cd $PROJECTS
-
-ml gcc
-ml R
-ml slurm/summit
